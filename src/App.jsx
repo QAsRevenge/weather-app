@@ -44,7 +44,7 @@ function App() {
       </div>
       <div className="weatherImage">
          {data.weather ? 
-          <img src={"src/images/" + data.weather[0].main + ".gif"}></img>
+          <img src={"/images/" + data.weather[0].main + ".gif"}></img>
           : null
         }
       </div>
