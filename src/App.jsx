@@ -13,7 +13,7 @@ function App() {
   const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${forecastLoc}&units=metric&appid=65e49f59506351175f9a6f2e7102c93f&lang=sv`
 
 let d = document.querySelector(".container")
-  
+  /*Trivial change to test bash script */
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
       axios.get(url).then((response) => {
