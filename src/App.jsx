@@ -5,27 +5,49 @@ function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState('')
 
+  const [forecastData, setForecastData] = useState({})
+  const [forecastLoc, setForecastLoc] = useState('')
+
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=65e49f59506351175f9a6f2e7102c93f&lang=sv`
 
+  const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${forecastLoc}&units=metric&appid=65e49f59506351175f9a6f2e7102c93f&lang=sv`
+
+let d = document.querySelector(".container")
+  
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
       axios.get(url).then((response) => {
         setData(response.data)
+        d.className += " grow"
         console.log(response.data)
+        console.log(url)
       })
       setLocation('')
     }
   }
+console.log(forecastURL)
+
+
+  const fetchForecast  = () =>  {{
+    axios.get(forecastURL).then((response) =>  {
+      setForecastData(response.forecastData)
+      console.log(response.forecastData)
+    })
+    setForecastLoc(location)
+    }
+  }
+  
 
   function getTime(dt, timezone) {
     const utc_seconds = parseInt(dt, 10) + parseInt(timezone, 10);
     const utc_milliseconds = utc_seconds * 1000;
-    const local_date = new Date(utc_milliseconds).toUTCString().slice(17, 22);
-    return local_date;
+    const local_time = new Date(utc_milliseconds).toUTCString().slice(17, 22);
+    return local_time;
   }
 
-/* Clear, Rain, Haze, Snow, Clouds, */ 
+/* Clear, Rain, Haze, Snow, Clouds, */
 
+  
   return (
     <div className="container">
       <div className="search-box">
@@ -37,6 +59,8 @@ function App() {
           placeholder='Enter Location'
           type="text" />
         <button className="fa-solid fa-magnifying-glass"></button>
+        
+        <button onClick={fetchForecast}></button>
       </div>
           <div className="location">
         <p>{data.name} {data.sys ? <span>{data.sys.country}</span> : null}</p>
@@ -47,6 +71,8 @@ function App() {
           <img src={"/images/" + data.weather[0].main + ".gif"}></img>
           : null
         }
+        <p className='yes'>{forecastData ? forecastData.cod : null}</p>
+
       </div>
           <div className="temp">
             {data.main ? <h1>{data.main.temp.toFixed()}<span>°C</span></h1> : null}

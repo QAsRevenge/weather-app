@@ -16,14 +16,21 @@ body {
 
 .container {
   position: relative;
-  width: 400px;
-  height: 450px;
+  width: 300px;
+  height: 100px;
   background: #fff;
   padding: 28px 32px;
   overflow: hidden;
   border-radius: 18px;
   font-family: 'Roboto', sans-serif;
   transition: 0.6s ease-out;
+}
+
+.grow {
+  height: 400px;
+}
+.yes {
+  font-size: 16px;
 }
 
 .search-box {
