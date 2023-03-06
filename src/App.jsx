@@ -12,9 +12,7 @@ function App() {
 
   const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${forecastLoc}&units=metric&appid=65e49f59506351175f9a6f2e7102c93f&lang=sv`
 
-let d = document.querySelector(".container")
-
-let x = "This is a test"
+  let d = document.querySelector(".container")
   
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
@@ -38,7 +36,6 @@ console.log(forecastURL)
     setForecastLoc(location)
     }
   }
-  
 
   function getTime(dt, timezone) {
     const utc_seconds = parseInt(dt, 10) + parseInt(timezone, 10);
@@ -46,7 +43,6 @@ console.log(forecastURL)
     const local_time = new Date(utc_milliseconds).toUTCString().slice(17, 22);
     return local_time;
   }
-
 /* Clear, Rain, Haze, Snow, Clouds, */
 
   
