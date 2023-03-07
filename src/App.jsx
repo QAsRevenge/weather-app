@@ -13,10 +13,6 @@ function App() {
   const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${forecastLoc}&units=metric&appid=65e49f59506351175f9a6f2e7102c93f&lang=sv`
 
   let d = document.querySelector(".container")
-  
-
-  const x = "hello guys"
-  const y = "maybe this time"
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
@@ -29,7 +25,6 @@ function App() {
       setLocation('')
     }
   }
-console.log(forecastURL)
 
 
   const fetchForecast  = () =>  {{
@@ -62,7 +57,6 @@ console.log(forecastURL)
           type="text" />
         <button className="fa-solid fa-magnifying-glass"></button>
         
-        <button onClick={fetchForecast}></button>
       </div>
           <div className="location">
         <p>{data.name} {data.sys ? <span>{data.sys.country}</span> : null}</p>
